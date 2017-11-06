@@ -21,7 +21,7 @@ module.exports = [
         };
         request(offer_option, function (error, response, body) {
             if (error) {
-                console.log('Unable to get data ');
+                console.log('Unable to get data');
                 session.send(`We will get back to you with ancillary offers...`);
                 throw new Error(error);
 

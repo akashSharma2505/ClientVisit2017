@@ -3,8 +3,53 @@ var request = require("request");
 
 module.exports = [
     (session, args, next) => {
-        console.log("Session:-" + JSON.stringify(session));
-        session.send("Hello this your bot");
+        var entities = args.entities;
+        var option_num = 0;
+        var useridlocal;
+
+        console.log("My Session: " + session.address);
+
+        var offer_option = {
+            url: ' http://ghbotapi.azurewebsites.net/sasusers/',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'GET',
+            json: true
+        };
+        request(offer_option, function (error, response, body) {
+            if (error) {
+                console.log('Unable to get data ');
+                session.send(`We will get back to you with ancillary offers...`);
+                throw new Error(error);
+
+            } else {
+
+                for (var i = 0, len = body.length; i < len; i++) {
+                    if (body[i].FirstName + body[i].LastName === session.userData.first_name + session.message.address.user) {
+                        useridlocal = body[i].UserID;
+                    }
+                }
+
+                var offer_option = {
+                    method: 'GET',
+                    url: 'http://ghbotapi.azurewebsites.net/sasusers/' + useridlocal + '/flight',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: anc_body,
+                    json: true
+                };
+                request(offer_option, function (error, response, body) {
+                    if (error) {
+                        console.log('Offeres are not saved....');
+                    } else {
+
+                        create_cards(body, session);
+                    }
+                });
+            }
+        });
     }
 ];
 
@@ -15,13 +60,9 @@ function create_cards(body, session_to_use) {
     for (i = 0; i < crew.length; i++) {
         var item = crew[i];
         var option = item.EmpId;
-        console.log(item.EmpId);
-        console.log(item.FirstName);
-        console.log(item.LastName);
-        console.log('Creating ancillary prods');
         var card = new builder.HeroCard(session_to_use)
-            .title(item.FirstName + " " + item.LastName)
-            .subtitle(item.EmpId.toString())
+            .title(body.Origin + " To " + body.Destination)
+            .subtitle("Flight: " + body.FlightNo + "Departing at : " + body.DepartureDate)
             .images([
                 builder.CardImage.create(session_to_use, get_image_url("MEL"))
             ])
@@ -35,7 +76,7 @@ function create_cards(body, session_to_use) {
 function get_image_url(code) {
     if (code === 'MEL') {
 
-        return 'http://michaelsphotolab.com/yahoo_site_admin/assets/images/Air_Pilot2x2.307191941_std.JPG';
+        return 'http://www.cardatabase.net/modifiedairlinerphotos/photos/big/00014380.jpg';
     }
     if (code === 'CON') {
 
