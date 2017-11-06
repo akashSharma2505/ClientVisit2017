@@ -7,7 +7,7 @@ module.exports = [
         var option_num = 0;
         var useridlocal;
 
-        console.log("My Session: " + session.message.address);
+        console.log("My Session: " + jSON.stringify( session.message.address));
 
         var offer_option = {
             url: ' http://ghbotapi.azurewebsites.net/sasusers/',
@@ -37,7 +37,6 @@ module.exports = [
                     headers: {
                         'content-type': 'application/json'
                     },
-                    body: anc_body,
                     json: true
                 };
                 request(offer_option, function (error, response, body) {
