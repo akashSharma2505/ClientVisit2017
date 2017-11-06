@@ -3,7 +3,7 @@ var request = require("request");
 
 module.exports = [
     (session, args, next) => {
-        console.log("Session:-" + session);
+        console.log("Session:-" + JSON.stringify(session));
         session.send("Hello this your bot");
     }
 ];
