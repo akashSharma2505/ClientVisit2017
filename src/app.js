@@ -54,52 +54,9 @@ var call_connector = new calling.CallConnector({
 server.post('/api/calls', call_connector.listen());
 var bot_call = new calling.UniversalCallBot(call_connector);
 
-bot_call.set('storage', new builder.MemoryBotStorage());
-
-bot.use(
-    RetrieveUserProfile({
-        accessToken: FB_ACCESS_TOKEN,
-        expireMinutes: 60,
-        fields: ['first_name', 'last_name', 'gender']
-    })
-);
-
-// var intents = new builder.IntentDialog({
-//     recognizers: [recognizer = new builder.LuisRecognizer(LUIS_ENDPOINT)]
-// });
-
-var recognizer = new builder.LuisRecognizer(LUIS_ENDPOINT);
-bot.recognizer(new builder.LuisRecognizer(LUIS_ENDPOINT));
-var intents = new builder.IntentDialog({ recognizers: [recognizer] })
-
-console.log(JSON.stringify(intents));
-
-var calling_intents = new builder.IntentDialog({
-    recognizers: [recognizer = new builder.LuisRecognizer(LUIS_ENDPOINT)]
-});
-
-require('../fulfillment/intents')(intents);
-require('../fulfillment/voice')(bot, bot_call, builder, calling);
-bot.dialog('/', intents);
 
 
-bot.dialog('/approvalpop', [
-    function (session, args, next) {
-        console.log("Started approvalpop");
-        var msg = new builder.Message(session);
-        msg.attachmentLayout(builder.AttachmentLayout.HeroCard)
-        msg.attachments([
-            new builder.HeroCard(session)
-                .title("Approval Required")
-                .subtitle('Request raised from ARN to CDG')
-                .text()
-                .buttons([
-                    builder.CardAction.imBack(session, "I approve for 100100", "👍"),
-                    builder.CardAction.imBack(session, "I reject for 100100", "👎")
-                ]),
-        ]).session.send(msg).endDialog();
-    }
-]);
+
 
 // send simple notification
 function sendProactiveMessage(req) {
@@ -138,6 +95,38 @@ server.get('/api/pushMessage', (req, res, next) => {
     res.send(pushResponse);
     next();
 });
+
+
+
+
+bot_call.set('storage', new builder.MemoryBotStorage());
+
+bot.use(
+    RetrieveUserProfile({
+        accessToken: FB_ACCESS_TOKEN,
+        expireMinutes: 60,
+        fields: ['first_name', 'last_name', 'gender']
+    })
+);
+
+// var intents = new builder.IntentDialog({
+//     recognizers: [recognizer = new builder.LuisRecognizer(LUIS_ENDPOINT)]
+// });
+
+var recognizer = new builder.LuisRecognizer(LUIS_ENDPOINT);
+bot.recognizer(new builder.LuisRecognizer(LUIS_ENDPOINT));
+var intents = new builder.IntentDialog({ recognizers: [recognizer] })
+
+console.log(JSON.stringify(intents));
+
+var calling_intents = new builder.IntentDialog({
+    recognizers: [recognizer = new builder.LuisRecognizer(LUIS_ENDPOINT)]
+});
+
+require('../fulfillment/intents')(intents);
+require('../fulfillment/voice')(bot, bot_call, builder, calling);
+bot.dialog('/', intents);
+
 
 
 intents.onDefault((session, args) => {
