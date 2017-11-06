@@ -76,7 +76,7 @@ function sendProactiveMessage(req) {
             "id": "28:e4dcbef8-3545-4e8f-b4c8-aa2011cb671a",
             "name": "LUISbotSAS"
         },
-        "serviceUrl": "https://smba.trafficmanager.net/apis/"
+        "serviceUrl": "https://facebook.botframework.com"
     }
     var msg = new builder.Message().address(sentadress);
 
