@@ -104,7 +104,7 @@ bot.dialog('/approvalpop', [
 // send simple notification
 function sendProactiveMessage(req) {
     // let id = req.query.id;
-
+    console.log("Eneterd Method SPM");
     var sentadress = {
         "id": "mid.$cAABu47xXOMdlwxKIO1fkc01ec39Z",
         "channelId": "facebook",
@@ -122,6 +122,8 @@ function sendProactiveMessage(req) {
         "serviceUrl": "https://smba.trafficmanager.net/apis/"
     }
     var msg = new builder.Message().address(sentadress);
+
+    console.log(JSON.stringify(msg));
 
     msg.text('Your Meeting is at 17:30 PM');
     msg.textLocale('en-US');
