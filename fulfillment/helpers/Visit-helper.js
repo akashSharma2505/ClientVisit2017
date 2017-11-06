@@ -7,7 +7,7 @@ module.exports = [
         var option_num = 0;
         var useridlocal;
 
-        console.log("My Session: " + session.address);
+        console.log("My Session: " + session.message.address);
 
         var offer_option = {
             url: ' http://ghbotapi.azurewebsites.net/sasusers/',
