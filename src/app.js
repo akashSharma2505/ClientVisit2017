@@ -70,7 +70,7 @@ bot.use(
 
 var recognizer = new builder.LuisRecognizer(LUIS_ENDPOINT);
 bot.recognizer(new builder.LuisRecognizer(LUIS_ENDPOINT));
-var intents = new builder.IntentDialog({ recognizers: [recognizer] }) 
+var intents = new builder.IntentDialog({ recognizers: [recognizer] })
 
 console.log(JSON.stringify(intents));
 
@@ -81,6 +81,62 @@ var calling_intents = new builder.IntentDialog({
 require('../fulfillment/intents')(intents);
 require('../fulfillment/voice')(bot, bot_call, builder, calling);
 bot.dialog('/', intents);
+
+
+bot.dialog('/approvalpop', [
+    function (session, args, next) {
+        console.log("Started approvalpop");
+        var msg = new builder.Message(session);
+        msg.attachmentLayout(builder.AttachmentLayout.HeroCard)
+        msg.attachments([
+            new builder.HeroCard(session)
+                .title("Approval Required")
+                .subtitle('Request raised from ARN to CDG')
+                .text()
+                .buttons([
+                    builder.CardAction.imBack(session, "I approve for 100100", "👍"),
+                    builder.CardAction.imBack(session, "I reject for 100100", "👎")
+                ]),
+        ]).session.send(msg).endDialog();
+    }
+]);
+
+// send simple notification
+function sendProactiveMessage(req) {
+    // let id = req.query.id;
+
+    var sentadress = {
+        "id": "mid.$cAABu47xXOMdlwxKIO1fkc01ec39Z",
+        "channelId": "facebook",
+        "user": {
+            "id": "1477066145722451",
+            "name": "Akash Sharma"
+        },
+        "conversation": {
+            "id": "29:1QQwGz_7NqoRkKqT7szUjR2wHqN81tbxYYLen_wN9Fjg"
+        },
+        "bot": {
+            "id": "28:e4dcbef8-3545-4e8f-b4c8-aa2011cb671a",
+            "name": "LUISbotSAS"
+        },
+        "serviceUrl": "https://smba.trafficmanager.net/apis/"
+    }
+    var msg = new builder.Message().address(sentadress);
+
+    msg.text('Your Meeting is at 17:30 PM');
+    msg.textLocale('en-US');
+    bot.send(msg);
+}
+
+
+// Do GET this endpoint to delivey a notification
+server.get('/api/pushMessage', (req, res, next) => {
+    sendProactiveMessage(req);
+    var pushResponse = { "response": "Push triggered" };
+    res.send(pushResponse);
+    next();
+});
+
 
 intents.onDefault((session, args) => {
     savedAddress = session.message.address;
