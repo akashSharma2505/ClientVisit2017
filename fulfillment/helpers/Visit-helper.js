@@ -11,7 +11,7 @@ module.exports = [
         var flighturl;
         for (var i = 0, len = entities.length; i < len; i++) {
             if (entities[i].type === 'builtin.datetimeV2.date') {
-                userdate = entities[i].entity;
+                userdate = entities[i].resolution.values[0].value;
             }
             else if (entities[i].type === 'Location') {
                 userloc = entities[i].resolution.values[0];
