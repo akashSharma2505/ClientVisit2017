@@ -25,6 +25,9 @@ module.exports = [
 
             } else {
 
+                console.log( "DB users +" + body[i].FirstName + body[i].LastName);
+                console.log( "Session users +" + session.userData.first_name + session.message.address.user);
+               
                 for (var i = 0, len = body.length; i < len; i++) {
                     if (body[i].FirstName + body[i].LastName === session.userData.first_name + session.message.address.user) {
                         useridlocal = body[i].UserID;
