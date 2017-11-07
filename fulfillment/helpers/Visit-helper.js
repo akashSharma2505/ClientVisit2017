@@ -6,6 +6,7 @@ module.exports = [
         var entities = args.entities;
         var option_num = 0;
         var useridlocal;
+<<<<<<< HEAD
         var userdate="null";
         var userloc="null";
         var flighturl;
@@ -18,6 +19,9 @@ module.exports = [
             }
         }
         
+=======
+
+>>>>>>> 286c3cde709f95f0ee949ddd2ebe726f58b3082e
         console.log("My Session: " + JSON.stringify(session.message.address));
         console.log("My USer Data: " + JSON.stringify(session.userData));
 
@@ -58,7 +62,17 @@ module.exports = [
                     if (error) {
                         console.log('Offeres are not saved....');
                     } else {
+<<<<<<< HEAD
                         create_cards(body, session,userdate,userloc);
+=======
+                        var address = session.message.address;
+                        var msg = new builder.Message()
+                            .attachmentLayout(builder.AttachmentLayout.carousel)
+                            .address(address)
+                            .attachments(create_cards(body, session));
+                        session.endDialog(msg);
+
+>>>>>>> 286c3cde709f95f0ee949ddd2ebe726f58b3082e
                     }
                 });
             }
