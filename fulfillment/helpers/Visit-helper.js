@@ -6,9 +6,20 @@ module.exports = [
         var entities = args.entities;
         var option_num = 0;
         var useridlocal;
-
-        console.log("My Session: " + JSON.stringify( session.message.address));
-        console.log("My USer Data: " + JSON.stringify( session.userData));
+        var userdate="null";
+        var userloc="null";
+        var flighturl;
+        for (var i = 0, len = entities.length; i < len; i++) {
+            if (entities[i].type === 'builtin.datetimeV2.date') {
+                userdate = entities[i].entity;
+            }
+            else if (entities[i].type === 'Location') {
+                userloc = entities[i].resolution.values[0];
+            }
+        }
+        
+        console.log("My Session: " + JSON.stringify(session.message.address));
+        console.log("My USer Data: " + JSON.stringify(session.userData));
 
         var offer_option = {
             url: ' http://ghbotapi.azurewebsites.net/sasusers/',
@@ -25,10 +36,10 @@ module.exports = [
                 throw new Error(error);
 
             } else {
-                console.log("Body:"+ JSON.stringify(body));
-                console.log( "DB users +" + body[0].FirstName + body[0].LastName);
-                console.log( "Session users +" + session.userData.first_name + session.userData.last_name);
-               
+                console.log("Body:" + JSON.stringify(body));
+                console.log("DB users +" + body[0].FirstName + body[0].LastName);
+                console.log("Session users +" + session.userData.first_name + session.userData.last_name);
+
                 for (var i = 0, len = body.length; i < len; i++) {
                     if (body[i].FirstName + body[i].LastName === session.userData.first_name + session.userData.last_name) {
                         useridlocal = body[i].UserID;
@@ -37,7 +48,7 @@ module.exports = [
 
                 var offer_option = {
                     method: 'GET',
-                    url: 'http://ghbotapi.azurewebsites.net/sasusers/' + useridlocal + '/flight',
+                    url: 'http://ghbotapi.azurewebsites.net/sasusers/' + useridlocal + '/flight/'+userloc+'/'+userdate,
                     headers: {
                         'content-type': 'application/json'
                     },
@@ -47,8 +58,7 @@ module.exports = [
                     if (error) {
                         console.log('Offeres are not saved....');
                     } else {
-
-                        create_cards(body, session);
+                        create_cards(body, session,userdate,userloc);
                     }
                 });
             }
@@ -56,11 +66,12 @@ module.exports = [
     }
 ];
 
-function create_cards(body, session_to_use) {
+function create_cards(body, session_to_use,date,location) {
     console.log(JSON.stringify(body));
     var crew = body;
     var cards = [];
     for (i = 0; i < crew.length; i++) {
+        
         var item = crew[i];
         var option = item.EmpId;
         var card = new builder.HeroCard(session_to_use)
