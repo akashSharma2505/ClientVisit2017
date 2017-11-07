@@ -8,6 +8,7 @@ module.exports = [
         var useridlocal;
 
         console.log("My Session: " + JSON.stringify( session.message.address));
+        console.log("My USer Data: " + JSON.stringify( session.userData));
 
         var offer_option = {
             url: ' http://ghbotapi.azurewebsites.net/sasusers/',
