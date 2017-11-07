@@ -7,8 +7,8 @@ module.exports = [
         var option_num = 0;
         var useridlocal;
 
-        console.log("My Session: " + JSON.stringify( session.message.address));
-        console.log("My USer Data: " + JSON.stringify( session.userData));
+        console.log("My Session: " + JSON.stringify(session.message.address));
+        console.log("My USer Data: " + JSON.stringify(session.userData));
 
         var offer_option = {
             url: ' http://ghbotapi.azurewebsites.net/sasusers/',
@@ -25,10 +25,10 @@ module.exports = [
                 throw new Error(error);
 
             } else {
-                console.log("Body:"+ JSON.stringify(body));
-                console.log( "DB users +" + body[0].FirstName + body[0].LastName);
-                console.log( "Session users +" + session.userData.first_name + session.userData.last_name);
-               
+                console.log("Body:" + JSON.stringify(body));
+                console.log("DB users +" + body[0].FirstName + body[0].LastName);
+                console.log("Session users +" + session.userData.first_name + session.userData.last_name);
+
                 for (var i = 0, len = body.length; i < len; i++) {
                     if (body[i].FirstName + body[i].LastName === session.userData.first_name + session.userData.last_name) {
                         useridlocal = body[i].UserID;
@@ -47,8 +47,13 @@ module.exports = [
                     if (error) {
                         console.log('Offeres are not saved....');
                     } else {
+                        var address = session.message.address;
+                        var msg = new builder.Message()
+                            .attachmentLayout(builder.AttachmentLayout.carousel)
+                            .address(address)
+                            .attachments(create_cards(body, session));
+                        session.endDialog(msg);
 
-                        create_cards(body, session);
                     }
                 });
             }
