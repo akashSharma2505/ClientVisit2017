@@ -26,10 +26,10 @@ module.exports = [
             } else {
                 console.log("Body:"+ JSON.stringify(body));
                 console.log( "DB users +" + body[0].FirstName + body[0].LastName);
-                console.log( "Session users +" + session.userData.first_name + session.message.address.user);
+                console.log( "Session users +" + session.userData.first_name + session.message.last_name);
                
                 for (var i = 0, len = body.length; i < len; i++) {
-                    if (body[i].FirstName + body[i].LastName === session.userData.first_name + session.message.address.user) {
+                    if (body[i].FirstName + body[i].LastName === session.message.last_name) {
                         useridlocal = body[i].UserID;
                     }
                 }
