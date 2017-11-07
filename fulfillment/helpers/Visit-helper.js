@@ -24,7 +24,7 @@ module.exports = [
                 throw new Error(error);
 
             } else {
-
+                console.log("Body:"+ JSON.stringify(body));
                 console.log( "DB users +" + body[i].FirstName + body[i].LastName);
                 console.log( "Session users +" + session.userData.first_name + session.message.address.user);
                
