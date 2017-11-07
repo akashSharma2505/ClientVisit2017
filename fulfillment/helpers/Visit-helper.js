@@ -46,7 +46,7 @@ module.exports = [
                     }
                 }
                 console.assert("user id is " + useridlocal);
-            console.log('http://ghbotapi.azurewebsites.net/sasusers/' + useridlocal + '/flight/'+userloc+'/'+userdate,);
+            console.log('http://ghbotapi.azurewebsites.net/sasusers/' + useridlocal + '/flight/'+userloc+'/'+userdate);
                 var offer_option = {
                     method: 'GET',
                     url: 'http://ghbotapi.azurewebsites.net/sasusers/' + useridlocal + '/flight/'+userloc+'/'+userdate,
