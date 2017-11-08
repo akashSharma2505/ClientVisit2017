@@ -93,12 +93,13 @@ function create_cards(body, session_to_use) {
         var item = crew[i];
         var option = item.EmpId;
         var card = new builder.HeroCard(session_to_use)
-            .title(body[i].Origin + " To " + body[i].Destination)
-            .subtitle("Flight: " + body[i].FlightNo + "Departing at : " + body[i].DepartureDate)
+            .title(body[i].FirstName + body[i].LastName)
+            .subtitle("Flight status: " + body[i].CompletionStatus)
             .images([
-                builder.CardImage.create(session_to_use, get_image_url("MEL"))
+                builder.CardImage.create(session_to_use, body[i].ProfilePic)
             ])
-            .buttons([builder.CardAction.imBack(session_to_use, 'Flight Details for ' + body[i].FlightNo)]);
+            .buttons([builder.CardAction.imBack(session_to_use, 'Flight Details for' + body[i].UserID,'Flight Details'),
+            builder.CardAction.imBack(session_to_use, 'Hotel Details for ' + body[i].UserID)],'Hotel Details');
         cards.push(card);
     }
     console.log(JSON.stringify(cards));
