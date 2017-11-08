@@ -83,12 +83,12 @@ function create_cards(body, session_to_use,date,location) {
         var item = crew[i];
         var option = item.EmpId;
         var card = new builder.HeroCard(session_to_use)
-            .title(body[i].Origin + " To " + body[i].Destination)
-            .subtitle("Flight: " + body[i].FlightNo + "Departing at : " + body[i].DepartureDate)
+            .title( body[i].HotelName)
+            .subtitle("Hotel Address : " + body[i].HotelAddress)
             .images([
-                builder.CardImage.create(session_to_use, get_image_url("MEL"))
+                builder.CardImage.create(session_to_use, get_image_url("CON"))
             ])
-            .buttons([builder.CardAction.postBack(session_to_use, 'Flight Details for ' + body[i].FlightNo, 'Click to find more')]);
+            .buttons([builder.CardAction.postBack(session_to_use, 'Hotel details for ' + body[i].HotelName, 'Click to find more')]);
         cards.push(card);
     }
     console.log(cards);
@@ -102,7 +102,7 @@ function get_image_url(code) {
     }
     if (code === 'CON') {
 
-        return 'http://www.informationsecuritybuzz.com/wp-content/uploads/wifi-1.jpg';
+        return 'https://www.whatsuplife.in/gurgaon/blog/wp-content/uploads/2015/11/The-Leela-Ambience-Gurgaon-Hotel-Residences-Gurgaon-02.jpg';
     }
     if (code === 'BAG') {
 
