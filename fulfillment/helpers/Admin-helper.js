@@ -98,8 +98,8 @@ function create_cards(body, session_to_use) {
             .images([
                 builder.CardImage.create(session_to_use, body[i].ProfilePic)
             ])
-            .buttons([builder.CardAction.imBack(session_to_use, 'hotel for' + body[i].UserID,'hotel for' + body[i].UserID),
-            builder.CardAction.imBack(session_to_use, ' flight for' + body[i].UserID,'flight for' + body[i].UserID)])
+            .buttons([builder.CardAction.imBack(session_to_use, 'hotel for ' + body[i].UserID,'hotel for ' + body[i].UserID),
+            builder.CardAction.imBack(session_to_use, ' flight for ' + body[i].UserID,'flight for ' + body[i].UserID)])
         cards.push(card);
     }
     console.log(JSON.stringify(cards));
