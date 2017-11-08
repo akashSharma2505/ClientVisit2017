@@ -88,7 +88,7 @@ function create_cards(body, session_to_use,date,location) {
             .images([
                 builder.CardImage.create(session_to_use, get_image_url("MEL"))
             ])
-            .buttons([builder.CardAction.imBack(session_to_use, 'Flight Details for ' + body[i].FlightNo, 'Click to find more')]);
+            .buttons([builder.CardAction.imBack(session_to_use, 'Flight Details for ' + body[i].FlightNo)]);
         cards.push(card);
     }
     console.log(JSON.stringify(cards));
