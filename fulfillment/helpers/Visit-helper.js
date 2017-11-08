@@ -83,7 +83,7 @@ function create_cards(body, session_to_use,date,location) {
         var item = crew[i];
         var option = item.EmpId;
         var card = new builder.HeroCard(session_to_use)
-            .title(body.Origin + " To " + body.Destination)
+            .title(body[i].Origin + " To " + body[i].Destination)
             .subtitle("Flight: " + body.FlightNo + "Departing at : " + body.DepartureDate)
             .images([
                 builder.CardImage.create(session_to_use, get_image_url("MEL"))
