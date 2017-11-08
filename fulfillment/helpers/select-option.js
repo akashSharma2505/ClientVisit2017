@@ -96,7 +96,7 @@ function create_cards(body, session_to_use) {
                     builder.CardImage.create(session_to_use, get_image_url(item.code))
                 ])
                 //.tap(builder.CardAction.openUrl(session_to_use, "https://www.finnair.com/fr/fr/?gclid=EAIaIQobChMI4eek5qWB1wIVl5EbCh2qrw2HEAAYASAAEgIO3PD_BwE"))
-                .buttons([builder.CardAction.postBack(session_to_use, 'Select ancillary ' + option, 'Select this ancillary')]);
+                .buttons([builder.CardAction.imBack(session_to_use, 'Select ancillary ' + option, 'Select this ancillary')]);
             cards.push(card);
         }
     }
