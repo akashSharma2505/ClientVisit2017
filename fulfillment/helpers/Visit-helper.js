@@ -86,7 +86,7 @@ function create_cards(body, session_to_use,date,location) {
             .title(body[i].Origin + " To " + body[i].Destination)
             .subtitle("Flight: " + body[i].FlightNo + "Departing at : " + body[i].DepartureDate)
             .images([
-                builder.CardImage.create(session_to_use, get_image_url("MEL"))
+                builder.CardImage.create(session_to_use, body[i].flightpic)
             ])
             .buttons([builder.CardAction.imBack(session_to_use, 'Flight Details for ' + body[i].FlightNo)]);
         cards.push(card);
