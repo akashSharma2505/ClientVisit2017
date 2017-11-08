@@ -18,11 +18,10 @@ module.exports = [
             }
         }
 
-        console.log("My Session: " + JSON.stringify(session.message.address));
-        console.log("My USer Data: " + JSON.stringify(session.userData));
+       
 
 
-console.assert("user id is " + useridlocal);
+console.log("End point URL is ");
         console.log('http://ghbotapi.azurewebsites.net/sasusers/' + empid + '/' +object+'/null/null/');
 
         var offer_option = {
