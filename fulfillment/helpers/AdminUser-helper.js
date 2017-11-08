@@ -11,7 +11,7 @@ module.exports = [
         var flighturl;
         for (var i = 0, len = entities.length; i < len; i++) {
             if (entities[i].type === 'builtin.number') {
-                empid = entities[i].resolution.values[0].value;
+                empid = entities[i].enity;
             }
             else if (entities[i].type === 'Object') {
                 object = entities[i].entity;
