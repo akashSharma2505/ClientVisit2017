@@ -91,7 +91,7 @@ function create_cards(body, session_to_use,date,location) {
             .buttons([builder.CardAction.postBack(session_to_use, 'Flight Details for ' + body[i].FlightNo, 'Click to find more')]);
         cards.push(card);
     }
-    console.log(JSON.stringify(cards);
+    console.log(JSON.stringify(cards));
     return cards;
 }
 
