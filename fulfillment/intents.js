@@ -9,4 +9,5 @@ module.exports = (intents) => {
     intents.matches('GH.Employee', require('../fulfillment/helpers/select-employee'));
     intents.matches('CV.Travel', require('../fulfillment/helpers/Visit-helper'));
     intents.matches('CV.Hotel', require('../fulfillment/helpers/Hotel-helper'));
+    intents.matches('CV.Admin', require('../fulfillment/helpers/Admin-helper'));
 };
