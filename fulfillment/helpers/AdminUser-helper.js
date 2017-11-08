@@ -58,6 +58,8 @@ function create_cards(body, session_to_use,object) {
 
         var item = crew[i];
         var option = item.EmpId;
+        if(object=="flight")
+        {
         var card = new builder.HeroCard(session_to_use)
             .title(body[i].Origin + " To " + body[i].Destination)
             .subtitle("Flight: " + body[i].FlightNo + "Departing at : " + body[i].DepartureDate)
@@ -65,10 +67,26 @@ function create_cards(body, session_to_use,object) {
                 builder.CardImage.create(session_to_use, get_image_url("MEL"))
             ])
             .buttons([builder.CardAction.imBack(session_to_use, 'Flight Details for ' + body[i].FlightNo)]);
-        cards.push(card);
+            cards.push(card);
+            
+        }
+        else 
+        {
+            var card = new builder.HeroCard(session_to_use)
+            .title( body[i].HotelName)
+            .subtitle("Hotel Address : " + body[i].HotelAddress)
+            .images([
+                builder.CardImage.create(session_to_use, get_image_url("CON"))
+            ])
+            .buttons([builder.CardAction.postBack(session_to_use, 'Hotel details for ' + body[i].HotelName, 'Click to find more')]);
+            cards.push(card);
+            
+        }
+       
     }
     console.log(JSON.stringify(cards));
-    return cards;
+
+   return cards;
 }
 
 function get_image_url(code) {
