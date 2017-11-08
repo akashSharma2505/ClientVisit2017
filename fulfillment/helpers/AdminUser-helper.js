@@ -37,7 +37,7 @@ console.assert("user id is " + useridlocal);
             if (error) {
                 console.log('Offeres are not saved....');
             } else {
-                create_cards(body, session, userdate, userloc);
+                
                 var address = session.message.address;
                 var msg = new builder.Message()
                     .attachmentLayout(builder.AttachmentLayout.carousel)
