@@ -27,6 +27,7 @@ module.exports = [
             console.log(session.message.address);
             builder.Prompts.text(session,`Hello there . :)`);
         }
+        session.beginDialog('userdetail');
         bot.dialog('userdetail', [
             function (session) {
                 builder.Prompts.choice(session, "Please choose 1 of the given options",userdetails );
