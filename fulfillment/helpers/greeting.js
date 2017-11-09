@@ -27,7 +27,7 @@ module.exports = [
         if (results.response) {
             var data = session.userdetails[results.response.entity];
         
-            session.beginDialog('helperMe');
+            session.beginDialog(require('./Visit-helper'));
         } else {
              session.endDialogWithResult("OK");
         }
@@ -35,8 +35,6 @@ module.exports = [
     
    
 ];
-
-bot.dialog('helperMe', require('./Visit-helper'));
 
 Date.prototype.addDays = function (days) {
     var date = new Date(this.valueOf());
