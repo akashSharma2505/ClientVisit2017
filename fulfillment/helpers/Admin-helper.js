@@ -47,7 +47,7 @@ module.exports.admin =
                     console.log("user is " + user);
                   
                     for (var i = 0, len = body.length; i < len; i++) {
-                        if (body[i].FirstName + body[i].LastName === user) {
+                        if (body[i].FirstName + body[i].LastName == user) {
                             useridlocal = body[i].UserID;
                         }
                     }
@@ -82,7 +82,7 @@ module.exports.admin =
     }
 
 
-function create_cards(body, session_to_use,user) {
+function create_cards(body, session_to_use) {
     console.log(JSON.stringify(body));
     var crew = body;
     var cards = [];
