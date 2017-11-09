@@ -11,6 +11,16 @@ var bot = new builder.UniversalBot(connector);
 
 bot.dialog('/userdetail', [
     function (session) {
+
+        var userdetails = {
+            "Get Flight details": {
+                value: "show me my flight details",
+
+            },
+            "Get Hotel details": {
+                value: "show me my hotel details",
+            }
+        };
         builder.Prompts.choice(session, "Please choose 1 of the given options", userdetails);
     },
     function (session, results) {
@@ -26,15 +36,7 @@ bot.dialog('/userdetail', [
 
 module.exports = [
     (session, args, next) => {
-        var userdetails = {
-            "Get Flight details": {
-                value: "show me my flight details",
 
-            },
-            "Get Hotel details": {
-                value: "show me my hotel details",
-            }
-        };
 
         if (session.userData.first_name) {
             builder.Prompts.text(session, `Hello ${session.userData.first_name}. :)`);
@@ -43,7 +45,7 @@ module.exports = [
             builder.Prompts.text(session, `Hello there . :)`);
         }
 
-        session.beginDialog(session, '*:/userdetail');
+        session.beginDialog(session, '/userdetail');
 
 
 
