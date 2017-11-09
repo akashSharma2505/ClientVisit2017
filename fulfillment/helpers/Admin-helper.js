@@ -16,7 +16,7 @@ module.exports = [
 
         console.log("My Session: " + JSON.stringify(session.message.address));
         console.log("My USer Data: " + JSON.stringify(session.userData));
-        console.log("Entities:" + JSON(args.entities));
+        console.log("Entities:" + JSON.stringify(args.entities));
         var offer_option = {
             url: ' http://ghbotapi.azurewebsites.net/sasusers/',
             headers: {
