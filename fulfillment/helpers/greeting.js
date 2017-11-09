@@ -26,7 +26,7 @@ module.exports = [
             builder.Prompts.text(session, `Hello there . :)`);
         }
 
-        session.beginDialog(session,'userdetail');
+        session.beginDialog(session,'*:/userdetail');
     }
 
 ];

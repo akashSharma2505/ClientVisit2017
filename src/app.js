@@ -128,7 +128,7 @@ require('../fulfillment/intents')(intents);
 require('../fulfillment/voice')(bot, bot_call, builder, calling);
 bot.dialog('/', intents);
 
-bot.dialog('userdetail', [
+bot.dialog('/userdetail', [
     function (session) {
         builder.Prompts.choice(session, "Please choose 1 of the given options", userdetails);
     },
