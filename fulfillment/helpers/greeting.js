@@ -1,5 +1,4 @@
 var builder = require('botbuilder');
-var helperMe = require('../helpers/Visit-helper');
 
 module.exports = [
 
@@ -37,6 +36,7 @@ module.exports = [
    
 ];
 
+bot.dialog('helperMe', require('./Visit-helper'));
 
 Date.prototype.addDays = function (days) {
     var date = new Date(this.valueOf());
