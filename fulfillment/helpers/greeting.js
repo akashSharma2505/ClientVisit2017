@@ -1,14 +1,12 @@
 var builder = require('botbuilder');
 
-
 module.exports = [
 
     // Destination
     function (session) {
         var userdetails = {
             "Get Flight details": {
-                value: "show me my flight details",
-                
+                value: "show me my flight details",                
             },
             "Get Hotel details": {
                 value: "show me my hotel details",
@@ -24,12 +22,6 @@ module.exports = [
         session.send('Welcome to TCS Aider help App');
         builder.Prompts.choice(session, "Please choose 1 of the given options",userdetails );
     },
-    function (session, results, next) {
-        session.dialogData.destination = results.response;
-        session.send('Looking for hotels in %s', results.response);
-        next();
-    },
-
     // Check-in
     function (session,results) {
         if (results.response) {
