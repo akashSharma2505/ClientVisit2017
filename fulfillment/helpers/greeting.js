@@ -6,8 +6,8 @@ module.exports = [
 
             // session.endDialog(`Hello ${session.userData.first_name}. :)`);
             var msg = new builder.Message()
-                .attachments(
-                new builder.CardAction.imBack(session, 'hotel for ', 'hotel for ')
+                .attachments([new builder.CardAction.imBack(session, 'hotel for ', 'hotel for ')]
+
                 );
             session.endDialog(msg);
         } else {
