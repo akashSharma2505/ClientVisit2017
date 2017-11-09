@@ -1,7 +1,7 @@
 var builder = require("botbuilder");
 var request = require("request");
 
-module.exports.admin = [
+module.exports.admin = 
    function  (session, args, next)  {
         var entities = args.entities;
         var option_num = 0;
@@ -80,7 +80,7 @@ module.exports.admin = [
             }
         });
     }
-];
+
 
 function create_cards(body, session_to_use) {
     console.log(JSON.stringify(body));
