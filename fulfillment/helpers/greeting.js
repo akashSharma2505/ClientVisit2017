@@ -25,7 +25,7 @@ module.exports = [
     // Check-in
     function (session,results) {
         if (results.response) {
-            var data = userdetails[results.response.entity];
+            var data = session.userdetails[results.response.entity];
             session.endDialogWithResult(`${data.value}.`); 
         } else {
             session.endDialogWithResult("OK");
