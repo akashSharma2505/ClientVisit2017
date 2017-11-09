@@ -25,6 +25,7 @@ module.exports = [
     // Check-in
     function (session,results) {
         if (results.response) {
+            session.send(results.response.entity);
             var data = session.userdetails[results.response.entity];
             
             session.send(`${data.value}.`); 
