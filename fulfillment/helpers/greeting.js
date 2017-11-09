@@ -15,24 +15,14 @@ module.exports = [
         if (session.userData.first_name) {
 
             builder.Prompts.text(session, `Hello ${session.userData.first_name}. :)`);
-        } else {
-            console.log(session.message.address);
-            builder.Prompts.text(session, `Hello there . :)`);
-        }
+        } 
         session.send('Welcome to TCS Aider help App');
         builder.Prompts.choice(session, "Please choose 1 of the given options",userdetails );
         next();
     },
     // Check-in
     function (session,results) {
-        if (results.response) {
-            session.send(results.response.entity);
-            var data = session.userdetails[results.response.entity];
-            session.endDialog();
-            
-        } else {
-             session.endDialogWithResult("OK");
-        }
+        session.endDialog();
     },
     
    
