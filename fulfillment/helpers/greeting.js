@@ -21,10 +21,12 @@ module.exports = [
         }
         session.send('Welcome to TCS Aider help App');
         builder.Prompts.choice(session, "Please choose 1 of the given options",userdetails );
+        
     },
     // Check-in
     function (session,results) {
         if (results.response) {
+            session.send(results.response.entity);
             var data = session.userdetails[results.response.entity];
         
             session.beginDialog(require('./Visit-helper'));
