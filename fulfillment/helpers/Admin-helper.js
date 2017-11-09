@@ -82,7 +82,7 @@ module.exports.admin =
     }
 
 
-function create_cards(body, session_to_use) {
+function create_cards(body, session_to_use,user) {
     console.log(JSON.stringify(body));
     var crew = body;
     var cards = [];
