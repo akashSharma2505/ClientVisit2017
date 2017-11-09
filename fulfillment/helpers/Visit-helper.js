@@ -17,7 +17,7 @@ module.exports = [
                 userloc = entities[i].resolution.values[0];
             }
             else if (entities[i].type === 'Users') {
-                require('../helpers/Admin-helper');
+                bot.beginDialog(session, require('../helpers/Admin-helper')); 
 
             }
         }
