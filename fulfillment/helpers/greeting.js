@@ -1,5 +1,5 @@
 var builder = require('botbuilder');
-var helperMe = require('./helpers/Visit-helper');
+var helperMe = require('../helpers/Visit-helper');
 
 module.exports = [
 
