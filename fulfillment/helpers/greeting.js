@@ -5,11 +5,9 @@ module.exports = [
         if (session.userData.first_name) {
 
             // session.endDialog(`Hello ${session.userData.first_name}. :)`);
-            var msg = new builder.Message()
-                .attachments([new builder.CardAction.imBack(session, 'hotel for ', 'hotel for ')]
 
-                );
-            session.endDialog(msg);
+
+            builder.Prompts.choice(session, "Which color?", "red|green|blue");
         } else {
             console.log(session.message.address);
             session.endDialog(`Hello there . :)`);
