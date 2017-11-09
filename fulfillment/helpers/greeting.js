@@ -28,17 +28,17 @@ module.exports = [
         if (results.response) {
             session.send(results.response.entity);
             var data = session.userdetails[results.response.entity];
-            
-            session.send(`${data.value}.`); 
-            session.beginDialog('../helpers/Visit-helper');
+        
+            session.beginDialog('helperMe');
         } else {
-            session.endDialogWithResult("OK");
+             session.endDialogWithResult("OK");
         }
     },
     
    
 ];
 
+bot.dialog('helperMe', require('./Visit-helper'));
 
 Date.prototype.addDays = function (days) {
     var date = new Date(this.valueOf());
