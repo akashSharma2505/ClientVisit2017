@@ -10,6 +10,6 @@ module.exports = [
             builder.Prompts.text(session,`Hello there . :)`);
         }
         builder.Prompts.choice(session, "Please choose 1 of the given options", "My flight details|My hotel details");
-        session.endDialog();
+        
     }
 ];
