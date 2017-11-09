@@ -27,7 +27,8 @@ module.exports = [
         if (results.response) {
             var data = session.userdetails[results.response.entity];
             
-            session.endConversation(`${data.value}.`); 
+            session.send(`${data.value}.`); 
+            session.beginDialog('../helpers/Visit-helper');
         } else {
             session.endDialogWithResult("OK");
         }
