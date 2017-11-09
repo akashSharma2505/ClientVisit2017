@@ -28,9 +28,9 @@ module.exports = [
         if (results.response) {
             var data = session.userdetails[results.response.entity];
         
-            return session.beginDialog('helperMe');
+            session.beginDialog('helperMe');
         } else {
-            return   session.endDialogWithResult("OK");
+             session.endDialogWithResult("OK");
         }
     },
     
