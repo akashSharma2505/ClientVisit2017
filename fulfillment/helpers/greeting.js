@@ -1,8 +1,14 @@
 var builder = require("botbuilder");
-
+const MICROSOFT_APP_ID = process.env.MICROSOFT_APP_ID || 'e4dcbef8-3545-4e8f-b4c8-aa2011cb671a';
+const API_AI_TOKEN = process.env.API_AI_TOKEN || 'api_ai';
+const MICROSOFT_APP_PASSWORD = process.env.MICROSOFT_APP_PASSWORD || 'avBBCTHdoztAxVU1Q7nojrS';
+var connector = new builder.ChatConnector({
+    appId: MICROSOFT_APP_ID,
+    appPassword: MICROSOFT_APP_PASSWORD
+});
+var bot = new builder.UniversalBot(connector);
 module.exports = [
     (session, args, next) => {
-        // session.endDialog(`Hello ${session.userData.first_name}. :)`);
         var userdetails = {
             "Get Flight details": {
                 value: "show me my flight details",
@@ -20,8 +26,8 @@ module.exports = [
             builder.Prompts.text(session, `Hello there . :)`);
         }
 
-
-        //builder.Prompts.choice(session, "Please choose 1 of the given options", userdetails);
-        session.endDialog(builder.Prompts.choice(session, "Please choose 1 of the given options", userdetails));
+        session.beginDialog('userdetail');
     }
+
 ];
+

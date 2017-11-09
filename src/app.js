@@ -128,6 +128,19 @@ require('../fulfillment/intents')(intents);
 require('../fulfillment/voice')(bot, bot_call, builder, calling);
 bot.dialog('/', intents);
 
+bot.dialog('userdetail', [
+    function (session) {
+        builder.Prompts.choice(session, "Please choose 1 of the given options", userdetails);
+    },
+    function (session, results) {
+        if (results.response) {
+            var data = userdetails[results.response.entity];
+            session.endDialogWithResult(`${data.value}.`);
+        } else {
+            session.endDialogWithResult("OK");
+        }
+    }
+]);
 
 
 intents.onDefault((session, args) => {
