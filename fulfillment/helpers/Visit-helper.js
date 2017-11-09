@@ -17,7 +17,7 @@ module.exports = [
                 userloc = entities[i].resolution.values[0];
             }
             else if (entities[i].type === 'Users') {
-                Adminintent(session,args,next);
+                require('../helpers/Admin-helper')(session,args,next);
 
             }
         }
