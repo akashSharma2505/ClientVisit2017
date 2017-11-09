@@ -11,4 +11,5 @@ module.exports = (intents) => {
     intents.matches('CV.Hotel', require('../fulfillment/helpers/Hotel-helper'));
     intents.matches('CV.Admin', require('../fulfillment/helpers/Admin-helper'));
     intents.matches('CV.Admin.User', require('../fulfillment/helpers/AdminUser-helper'));
+    intents.matches('CV.Moredetails', require('../fulfillment/helpers/Moredetails'));
 };
