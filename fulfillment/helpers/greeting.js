@@ -28,8 +28,8 @@ module.exports = [
         if (results.response) {
             session.send(results.response.entity);
             var data = session.userdetails[results.response.entity];
-        
-            session.beginDialog(require('./Visit-helper'));
+            session.endDialog();
+            
         } else {
              session.endDialogWithResult("OK");
         }
