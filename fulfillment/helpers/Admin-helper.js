@@ -45,8 +45,9 @@ module.exports = [
                 }
                 else {
                     console.log("user is " + user);
-                    console.log("DB Users " + body[i].FirstName + body[i].LastName);
+                   
                     for (var i = 0, len = body.length; i < len; i++) {
+                        console.log("DB Users " + body[i].FirstName + body[i].LastName);
                         if (body[i].FirstName + body[i].LastName == user) {
                             useridlocal = body[i].UserID;
                         }
