@@ -3,7 +3,7 @@ var builder = require('botbuilder');
 module.exports = [
 
     // Destination
-    function (session) {
+    function (session,args, next) {
         var userdetails = {
             "Get Flight details": {
                 value: "show me my flight details",                
@@ -21,7 +21,7 @@ module.exports = [
         }
         session.send('Welcome to TCS Aider help App');
         builder.Prompts.choice(session, "Please choose 1 of the given options",userdetails );
-        
+        next();
     },
     // Check-in
     function (session,results) {
