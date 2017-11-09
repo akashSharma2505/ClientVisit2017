@@ -1,6 +1,6 @@
 var builder = require("botbuilder");
 var request = require("request");
-
+var Adminintent =require('../helpers/Admin-helper');
 module.exports = [
     (session, args, next) => {
         var entities = args.entities;
@@ -17,7 +17,7 @@ module.exports = [
                 userloc = entities[i].resolution.values[0];
             }
             else if (entities[i].type === 'Users') {
-                bot.beginDialog(session, require('../helpers/Admin-helper')); 
+                Adminintent(session,args,next);
 
             }
         }
