@@ -71,7 +71,7 @@ module.exports = [
 ];
 
 function create_cards(body, session_to_use,date,location) {
-    console.log(JSON.stringify(body));
+    
     var crew = body;
     var cards = [];
     for (i = 0; i < crew.length; i++) {
@@ -87,7 +87,7 @@ function create_cards(body, session_to_use,date,location) {
             .buttons([builder.CardAction.imBack(session_to_use, 'Flight Details for ' + body[i].FlightNo)]);
         cards.push(card);
     }
-    console.log(JSON.stringify(cards));
+    
     return cards;
 }
 
