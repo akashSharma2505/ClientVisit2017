@@ -6,26 +6,26 @@ module.exports = [
     function (session) {
         var userdetails = {
             "Get Flight details": {
-                value: "show me my flight details",                
+                value: "show me my flight details",
             },
             "Get Hotel details": {
                 value: "show me my hotel details",
             }
         };
-        if (session.userData.first_name) {
+/*         if (session.userData.first_name) {
 
             builder.Prompts.text(session, `Hello ${session.userData.first_name}. :)`);
-        } 
+        } */
         session.send('Welcome to TCS Aider help App');
-        builder.Prompts.choice(session, "Please choose 1 of the given options",userdetails );
-        
+        builder.Prompts.choice(session, "Please choose 1 of the given options", userdetails);
+
     },
     // Check-in
-    function (session,results) {
+    function (session, results) {
         session.endDialog();
     },
-    
-   
+
+
 ];
 
 Date.prototype.addDays = function (days) {
