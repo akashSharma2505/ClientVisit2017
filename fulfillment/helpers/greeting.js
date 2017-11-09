@@ -21,7 +21,7 @@ module.exports = [
         }
 
 
-        builder.Prompts.choice(session, "Please choose 1 of the given options", userdetails);
-
+        //builder.Prompts.choice(session, "Please choose 1 of the given options", userdetails);
+        session.endDialog(builder.Prompts.choice(session, "Please choose 1 of the given options", userdetails));
     }
 ];
