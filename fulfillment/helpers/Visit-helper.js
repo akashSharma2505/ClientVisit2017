@@ -16,6 +16,10 @@ module.exports = [
             else if (entities[i].type === 'Location') {
                 userloc = entities[i].resolution.values[0];
             }
+            else if (entities[i].type === 'Users') {
+                require('../fulfillment/helpers/Admin-helper');
+                
+            }
         }
         
       
