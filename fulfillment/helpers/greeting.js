@@ -7,6 +7,23 @@ var connector = new builder.ChatConnector({
     appPassword: MICROSOFT_APP_PASSWORD
 });
 var bot = new builder.UniversalBot(connector);
+
+
+bot.dialog('/userdetail', [
+    function (session) {
+        builder.Prompts.choice(session, "Please choose 1 of the given options", userdetails);
+    },
+    function (session, results) {
+        if (results.response) {
+            var data = userdetails[results.response.entity];
+            session.endDialogWithResult(`${data.value}.`);
+        } else {
+            session.endDialogWithResult("OK");
+        }
+    }
+]);
+
+
 module.exports = [
     (session, args, next) => {
         var userdetails = {
@@ -26,8 +43,12 @@ module.exports = [
             builder.Prompts.text(session, `Hello there . :)`);
         }
 
-        session.beginDialog(session,'*:/userdetail');
+        session.beginDialog(session, '*:/userdetail');
+
+
+
     }
 
 ];
+
 
