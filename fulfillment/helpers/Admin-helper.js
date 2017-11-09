@@ -40,7 +40,7 @@ module.exports.admin =
                     var msg = new builder.Message()
                         .attachmentLayout(builder.AttachmentLayout.carousel)
                         .address(address)
-                        .attachments(create_cards(body, session, user));
+                        .attachments(create_cards(body, session));
                     session.endDialog(msg);
                 }
                 else {
@@ -71,7 +71,7 @@ module.exports.admin =
                             var msg = new builder.Message()
                                 .attachmentLayout(builder.AttachmentLayout.carousel)
                                 .address(address)
-                                .attachments(create_cards(body, session, user));
+                                .attachments(create_cards(body, session));
                             session.endDialog(msg);
 
                         }
