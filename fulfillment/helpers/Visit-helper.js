@@ -16,10 +16,10 @@ module.exports = [
             else if (entities[i].type === 'Location') {
                 userloc = entities[i].resolution.values[0];
             }
-            else if (entities[i].type === 'Users') {
+  /*           else if (entities[i].type === 'Users') {
                 Adminintent.admin(session,args,next);
 
-            }
+            } */
         }
         
       

@@ -1,8 +1,8 @@
 var builder = require("botbuilder");
 var request = require("request");
 
-module.exports.admin = 
-   function  (session, args, next)  {
+module.exports.admin =
+    function (session, args, next) {
         var entities = args.entities;
         var option_num = 0;
         var useridlocal;
@@ -16,7 +16,7 @@ module.exports.admin =
 
         console.log("My Session: " + JSON.stringify(session.message.address));
         console.log("My USer Data: " + JSON.stringify(session.userData));
-
+        console.log("Entities:" + JSON(args.entities));
         var offer_option = {
             url: ' http://ghbotapi.azurewebsites.net/sasusers/',
             headers: {
@@ -45,7 +45,7 @@ module.exports.admin =
                 }
                 else {
                     console.log("user is " + user);
-                  
+                    console.log("DB Users " + body[i].FirstName + body[i].LastName);
                     for (var i = 0, len = body.length; i < len; i++) {
                         if (body[i].FirstName + body[i].LastName == user) {
                             useridlocal = body[i].UserID;
