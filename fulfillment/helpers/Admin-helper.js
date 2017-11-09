@@ -54,7 +54,7 @@ module.exports = [
                     }
                     var endpointUrl;
 
-                    console.log('http://ghbotapi.azurewebsites.net/sasusers/' + useridlocal);
+                    console.log(' hello : http://ghbotapi.azurewebsites.net/sasusers/' + useridlocal);
                     var offer_option = {
                         method: 'GET',
                         url: 'http://ghbotapi.azurewebsites.net/sasusers/' + useridlocal,
