@@ -1,4 +1,5 @@
 var builder = require('botbuilder');
+var helperMe = require('./helpers/Visit-helper');
 
 module.exports = [
 
@@ -26,11 +27,10 @@ module.exports = [
     function (session,results) {
         if (results.response) {
             var data = session.userdetails[results.response.entity];
-            
-            session.send(`${data.value}.`); 
-            session.beginDialog('../helpers/Visit-helper');
+        
+            return session.beginDialog('helperMe');
         } else {
-            session.endDialogWithResult("OK");
+            return   session.endDialogWithResult("OK");
         }
     },
     
