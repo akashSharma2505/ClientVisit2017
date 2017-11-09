@@ -26,6 +26,7 @@ module.exports = [
     function (session,results) {
         if (results.response) {
             var data = session.userdetails[results.response.entity];
+            session.send(data.value);
             session.endDialogWithResult(`${data.value}.`); 
         } else {
             session.endDialogWithResult("OK");
