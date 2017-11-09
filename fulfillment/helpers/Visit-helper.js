@@ -17,7 +17,7 @@ module.exports = [
                 userloc = entities[i].resolution.values[0];
             }
             else if (entities[i].type === 'Users') {
-                Adminintent.print(session,args,next);
+                Adminintent.admin(session,args,next);
 
             }
         }

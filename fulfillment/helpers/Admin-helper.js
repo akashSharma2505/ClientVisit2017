@@ -2,7 +2,7 @@ var builder = require("botbuilder");
 var request = require("request");
 
 module.exports.admin = [
-   function print (session, args, next)  {
+   function  (session, args, next)  {
         var entities = args.entities;
         var option_num = 0;
         var useridlocal;
